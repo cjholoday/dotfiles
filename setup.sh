@@ -25,7 +25,7 @@ echo "$machine_id" > "$dotfiles_path"/machine_id
 # symlink all the dotfiles into $HOME
 set -f # disable globbing
 for dotfile in $dotfiles; do
-    if [ -z "$force" ] || [ ! -f "$HOME/$dotfile" ]; then
+    if [ -z "$force" ] && [ ! -f "$HOME/$dotfile" ]; then
         printf "warning: '$HOME/$dotfile' already exists. skipping it...\n"
     else
         ln -sf "$dotfiles_path/$dotfile" "$HOME/$dotfile"

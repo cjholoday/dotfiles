@@ -1,1 +1,3 @@
-. .bashrc
+#!bin/sh
+
+. "$HOME"/.bashrc

@@ -1,13 +1,14 @@
-#!bin/bash 
+#!bin/sh 
 
-#######################################
+###########################################################
 # autojump
-#######################################
+###########################################################
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
 
-#######################################
+
+###########################################################
 # aliases
-#######################################
+###########################################################
 
 # used to visually separate old commands from new ones
 alias sep="printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n' \
@@ -35,9 +36,38 @@ alias egrep="egrep --color"
 alias fgrep="fgrep --color"
 alias cheat="vim ~/.cheatsheet"
 
-PS1='\e[0;35m\w:\e[0m'
 
 # Find a file with a pattern in name (taken from github/awdeorio/dotfiles):
 function ff() { 
     find . -type f -iwholename '*'$*'*' ;
 }
+
+
+###########################################################
+# Detect the machine id and use the correct PS1
+###########################################################
+
+dotfiles_path="$HOME/dotfiles"
+echo "$dotfiles_path"
+
+# the machine id stored in the file dotfiles/machine_id, which is populated by 
+# the user defined value during setup
+if [ -f "$dotfiles_path/machine_id" ]; then
+    machine_id="$(cat "$dotfiles_path/machine_id")"
+    case "$machine_id" in 
+        "osx_laptop")
+            PS1='\e[1;32m\w: \e[0m'
+            ;;
+        "caen")
+            PS1="\[\033[01;38;5;130m\]caen$ \w: \[\033[0m\]"
+            ;;
+        "ubuntu_vm")
+            PS1='\e[1;34m\w: \e[0m'
+            ;;
+        *)
+            PS1='\e[1;36m\w: \e[0m'
+            ;;
+    esac
+else
+    printf "Error: Run the dotfiles setup script before using .bashrc!\n"
+fi

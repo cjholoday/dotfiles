@@ -44,7 +44,7 @@ function ff() {
 
 
 ###########################################################
-# Detect the machine id and use the correct PS1
+# Detect the machine id and use the corresponding PS1
 ###########################################################
 
 dotfiles_path="$HOME/dotfiles"
@@ -56,15 +56,19 @@ if [ -f "$dotfiles_path/machine_id" ]; then
     machine_id="$(cat "$dotfiles_path/machine_id")"
     case "$machine_id" in 
         "osx_laptop")
-            PS1='\e[1;32m\w: \e[0m'
+            # cyan PS1
+            PS1='\e[1;32mosx$ \w: \e[0m'
             ;;
         "caen")
+            # orange PS1
             PS1="\[\033[01;38;5;130m\]caen$ \w: \[\033[0m\]"
             ;;
-        "ubuntu_vm")
-            PS1='\e[1;34m\w: \e[0m'
+        "research")
+            # yellow PS1
+            PS1='\e[1;33mresearch$ \w: \e[0m'
             ;;
         *)
+            # blue PS1
             PS1='\e[1;36m\w: \e[0m'
             ;;
     esac

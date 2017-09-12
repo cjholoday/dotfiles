@@ -1,6 +1,15 @@
 #!bin/sh 
 
 ###########################################################
+# Support machine dependent bashrc additions
+###########################################################
+
+# all per-system bashrc customizations are put in dotfiles/bashrc_local
+if [ -f "$dotfiles_path/.bashrc_local" ]; then
+    . "$dotfiles_path/.bashrc_local"
+fi
+
+###########################################################
 # autojump
 ###########################################################
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
@@ -48,7 +57,6 @@ function ff() {
 ###########################################################
 
 dotfiles_path="$HOME/dotfiles"
-echo "$dotfiles_path"
 
 # the machine id stored in the file dotfiles/machine_id, which is populated by 
 # the user defined value during setup

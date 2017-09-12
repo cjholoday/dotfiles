@@ -30,5 +30,14 @@ alias ls='ls -G'
 alias m="make"
 alias p="python"
 alias p3="python3"
+alias grep="grep --color"
+alias egrep="egrep --color"
+alias fgrep="fgrep --color"
+alias cheat="vim ~/.cheatsheet"
 
 PS1='\e[0;35m\w:\e[0m'
+
+# Find a file with a pattern in name (taken from github/awdeorio/dotfiles):
+function ff() { 
+    find . -type f -iwholename '*'$*'*' ;
+}

@@ -1,5 +1,3 @@
-*
-!.gitignore
-!.bashrc
-!.bash_profile
-!.vimrc
+.DS_STORE
+*.swp
+*.swo

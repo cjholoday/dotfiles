@@ -11,7 +11,7 @@
 machine_id="$1"
 force="$2"
 
-dotfiles=".bash_profile .bashrc .vimrc"
+dotfiles=".bash_profile .bashrc .vimrc .cheatsheet"
 dotfiles_path="$HOME/dotfiles"
 
 # do a sanity check that the repo is placed in the correct directory

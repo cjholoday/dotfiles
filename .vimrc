@@ -64,6 +64,7 @@ let mapleader = "\<Space>"
 let maplocalleader = "-"
 
 nnoremap <leader>w <c-w><c-w>
+nnoremap <leader>f :w<esc>
 
 " Swap buffers in a two way split and stay in the current buffer
 nnoremap <leader>bs <c-w><c-x><c-w><c-w>

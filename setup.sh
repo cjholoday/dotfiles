@@ -1,6 +1,6 @@
 #!bin/sh
 
-# Usage: sh setup.sh [machine_id] [force?]
+# Usage: sh setup.sh [force] [machine_id]
 #
 # [machine_id] will be written to a file named machine_id in the dotfiles directory. It
 # is used to identify which machine this installation is for. This is useful for 
@@ -8,8 +8,8 @@
 #
 # If any string is passed for the force argument, then files in $HOME will be overwritten
 # with symlinks
-machine_id="$1"
-force="$2"
+force="$1"
+machine_id="$2"
 
 dotfiles=".bash_profile .bashrc .vimrc .cheatsheet"
 dotfiles_path="$HOME/dotfiles"
@@ -20,7 +20,9 @@ if [ ! -d "$dotfiles_path" ] || [ ! -f "$dotfiles_path/setup.sh" ]; then
     exit 1
 fi
 
-echo "$machine_id" > "$dotfiles_path"/machine_id
+if [ ! -z "$machine_id" ]; then
+    echo "$machine_id" > "$dotfiles_path"/machine_id
+fi
 
 # symlink all the dotfiles into $HOME
 set -f # disable globbing

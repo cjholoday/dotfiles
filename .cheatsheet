@@ -1,0 +1,6 @@
+# remove extension
+name=$(echo $filename | cut -f 1 -d '.')
+
+# deletes any prefix up to and including the last slash '/'
+basename
+

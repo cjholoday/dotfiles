@@ -1,0 +1,20 @@
+[color]
+    ui = true
+[user]
+    name = Colton Holoday
+    email = choloday@umich.edu
+[alias]
+    l = log --oneline --graph
+    co = checkout
+    st = status
+    df = diff
+    ci = commit
+    br = branch
+    mg = merge
+    ps = push
+    pl = pull
+    rb = rebase
+[core]
+	editor = vim
+[pull]
+	rebase = true

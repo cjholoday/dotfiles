@@ -14,7 +14,7 @@ machine_id="$2"
 # create .user.gitconfig if it doesn't exist
 touch user.gitconfig
 
-dotfiles="bash_profile bashrc vimrc cheatsheet gitconfig user.gitconfig gitignore"
+dotfiles="bash_profile bashrc vimrc cheatsheet gitconfig user.gitconfig gitignore inputrc"
 dotfiles_path="$HOME/dotfiles"
 
 # do a sanity check that the repo is placed in the correct directory

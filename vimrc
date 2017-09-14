@@ -44,6 +44,10 @@ set relativenumber
 " Use real tabs for makefiles because the syntax demands it
 autocmd FileType make setlocal noexpandtab
 
+" Use two space indentation with html
+autocmd FileType html setlocal shiftwidth=2
+autocmd FileType html setlocal smarttab
+
 " Escape from insert and visual mode with 'jk'
 inoremap jk <esc>
 vnoremap <leader>jk <esc>

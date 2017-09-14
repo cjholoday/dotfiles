@@ -3,3 +3,4 @@
 *.swo
 machine_id
 .bashrc_local
+.user.gitconfig

@@ -1,10 +1,11 @@
 [color]
     ui = true
-[user]
-    name = Colton Holoday
-    email = choloday@umich.edu
+[include]
+    path = .user.gitconfig
 [alias]
-    l = log --oneline --graph
+    # credit: stackoverflow.com/questions/1057564/pretty-git-branch-graphs
+    l = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+
     co = checkout
     st = status
     df = diff
@@ -15,6 +16,4 @@
     pl = pull
     rb = rebase
 [core]
-	editor = vim
-[pull]
-	rebase = true
+    editor = vim

@@ -12,9 +12,9 @@ force="$1"
 machine_id="$2"
 
 # create .user.gitconfig if it doesn't exist
-touch .user.gitconfig
+touch user.gitconfig
 
-dotfiles=".bash_profile .bashrc .vimrc .cheatsheet .gitconfig .user.gitconfig"
+dotfiles="bash_profile bashrc vimrc cheatsheet gitconfig user.gitconfig"
 dotfiles_path="$HOME/dotfiles"
 
 # do a sanity check that the repo is placed in the correct directory
@@ -30,10 +30,10 @@ fi
 # symlink all the dotfiles into $HOME
 set -f # disable globbing
 for dotfile in $dotfiles; do
-    if [ -z "$force" ] && [ -f "$HOME/$dotfile" ]; then
+    if [ -z "$force" ] && [ -f "$HOME/.$dotfile" ]; then
         printf "warning: '$HOME/$dotfile' already exists. skipping it...\n"
     else
-        ln -sf "$dotfiles_path/$dotfile" "$HOME/$dotfile"
+        ln -sf "$dotfiles_path/$dotfile" "$HOME/.$dotfile"
     fi
 done
 set +f # re-enable globbing

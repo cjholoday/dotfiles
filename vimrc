@@ -1,3 +1,6 @@
+" Do this first because it affects other commands
+set nocompatible
+
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""" 
@@ -26,7 +29,6 @@ execute pathogen#infect()
 filetype indent plugin on
 
 set autoindent
-set nocompatible
 set wildmenu
 set showcmd
 set hlsearch

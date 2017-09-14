@@ -19,9 +19,10 @@ endif
 execute pathogen#infect()
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
-" Common optimizations I've adopted
+" Common configurations I've adopted
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 
+" Load plugins, indentation, and trigger a FileType event 
 filetype indent plugin on
 
 set autoindent
@@ -37,28 +38,19 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set nrformats=
-set colorcolumn=90
+set colorcolumn=80
 set relativenumber
+
+" Use real tabs for makefiles because the syntax demands it
 autocmd FileType make setlocal noexpandtab
 
-
-" Display the current working directory at the bottom of the window
-set ls=2
-
+" Escape from insert and visual mode with 'jk'
 inoremap jk <esc>
 vnoremap <leader>jk <esc>
-nnoremap <leader>jk <esc>
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " Leader Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""" 
-
-" General_rules: 
-"   (1) leader mappings are two letters unless fundamental
-"   (2) the first character specifies the category 
-"           b = buffer    
-"           v = vim
-"           a = add-on/plugin
 
 let mapleader = "\<Space>"
 let maplocalleader = "-"
@@ -70,23 +62,25 @@ nnoremap <leader>f :w<esc>
 nnoremap <leader>bs <c-w><c-x><c-w><c-w>
 vnoremap <leader>bs <c-w><c-x><c-w><c-w>gv
 
-" edit and source vimrc
+" Edit and source vimrc
 nnoremap <leader>ve :tabe $MYVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
-" have vim cd to buffer's path
+" cd to buffer's path
 nnoremap <leader>bc :cd %:p:h<cr>
 vnoremap <leader>bc :cd %:p:h<cr>gv
 
+" Toggle relative number mode
 nnoremap <leader>r :call ToggleRelativeNumber()<cr>
 vnoremap <leader>r :call ToggleRelativeNumber()<cr>gv
+function! ToggleRelativeNumber()
+    if (&relativenumber ==? 0)
+        set relativenumber
+    elseif (&relativenumber ==? 1) 
+        set norelativenumber
+    endif
+endfunction
 
-" commands for quick commenting
-autocmd BufEnter *.h,*.cpp,*.c nnoremap <buffer> <localleader>c I//<esc>
-autocmd BufEnter *.h,*.cpp,*.c vnoremap <buffer> <localleader>c :s/^/\/\//<cr>:nohl<cr>
-
-autocmd BufEnter *.py,Makefile nnoremap <buffer> <localleader>c I#<esc>
-autocmd BufEnter *.vim,.vimrc nnoremap <buffer> <localleader>c I"<esc>
 
 " Faster copy paste for GUI vim
 nnoremap <leader>y "+yy
@@ -106,35 +100,4 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " ctags: index current directory
 nnoremap <leader>t :cd %:p:h<cr>:!ctags -R .<cr><cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""" 
-" Abbreviations
-"""""""""""""""""""""""""""""""""""""""""""""""""" 
-
-" Rule: each abbreviation starts with '`'
-
-" (50 characters)
-iab `/ //////////////////////////////////////////////////
-iab `- --------------------------------------------------
-iab `= ==================================================
-iab `" """"""""""""""""""""""""""""""""""""""""""""""""""
-iab `# ##################################################
-
-" (70 characters)
-iab ``/ //////////////////////////////////////////////////////////////////////
-iab ``- ----------------------------------------------------------------------
-iab ``= ======================================================================
-iab ``" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""" 
-" Relative numbers
-"""""""""""""""""""""""""""""""""""""""""""""""""" 
-
-function! ToggleRelativeNumber()
-    if (&relativenumber ==? 0)
-        set relativenumber
-    elseif (&relativenumber ==? 1) 
-        set norelativenumber
-    endif
-endfunction
 

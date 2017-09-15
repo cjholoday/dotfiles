@@ -15,6 +15,7 @@ cd ~/.vim/bundle
 plugin_repos=""
 plugin_repos="$plugin_repos git://github.com/airblade/vim-gitgutter.git"
 plugin_repos="$plugin_repos https://github.com/bling/vim-airline"
+plugin_repos="$plugin_repos https://github.com/fatih/vim-go"
 
 set -p # disable globbing
 for plugin_repo in $plugin_repos; do

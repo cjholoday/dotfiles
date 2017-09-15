@@ -26,3 +26,10 @@ __pycache__/
 
 # osx
 .DS_STORE
+
+# tar files
+*.tar.bz2
+*.tar.bz
+*.gz
+*.xz
+*.rar

@@ -46,11 +46,12 @@ alias fgrep="fgrep --color"
 alias cheat="vim ~/.cheatsheet"
 
 # update dotfiles, symlink any new ones, and update vim plugins
-alias dotdate="cd $HOME/dotfiles; \
+alias dotdate="pushd $HOME/dotfiles; \
     git pull origin master; \
     bash setup.sh; \
     bash upgrade_vim.sh; \
-    . $HOME/.bashrc"
+    . $HOME/.bashrc; \
+    popd"
 
 # Find a file with a pattern in name (taken from github/awdeorio/dotfiles):
 function ff() { 

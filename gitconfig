@@ -1,7 +1,7 @@
 [color]
     ui = true
 [include]
-    path = .user.gitconfig
+    path = ~/.user.gitconfig
 [alias]
     # credit: stackoverflow.com/questions/1057564/pretty-git-branch-graphs
     l = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
@@ -17,3 +17,4 @@
     rb = rebase
 [core]
     editor = vim
+    excludesfile = ~/.gitignore

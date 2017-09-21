@@ -56,7 +56,7 @@ inoremap jk <esc>
 vnoremap <leader>jk <esc>
 
 " Search visually selected text
-vnoremap // y/<C-R>"<CR>
+vnoremap * y/<C-R>"<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " Leader Mappings

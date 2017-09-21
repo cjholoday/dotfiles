@@ -18,6 +18,11 @@ tags
 *.out
 out
 a.out
+log
+*.log
+*.errlog
+e
+m
 
 # python
 __pycache__/

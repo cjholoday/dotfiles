@@ -71,8 +71,8 @@ if [ -f "$dotfiles_path/machine_id" ]; then
     machine_id="$(cat "$dotfiles_path/machine_id")"
     case "$machine_id" in 
         "osx_laptop")
-            # cyan PS1
-            PS1='\e[1;32mosx$ \w: \e[0m'
+            # purple PS1
+            PS1="\[\033[01;38;5;140m\]osx$ \w: \[\033[0m\]"
             ;;
         "caen")
             # orange PS1
@@ -80,11 +80,15 @@ if [ -f "$dotfiles_path/machine_id" ]; then
             ;;
         "research")
             # yellow PS1
-            PS1='\e[1;33mresearch$ \w: \e[0m'
+            PS1='\[\e[1;33m\]research$ \w: \[\e[0m\]'
+            ;;
+        "vagrant")
+            # green PS1
+            PS1='\[\e[1;32m\]vagrant$ \w: \[\e[0m\]'
             ;;
         *)
             # blue PS1
-            PS1='\e[1;36m\w: \e[0m'
+            PS1='\[\e[1;36m\]\w: \[\e[0m\]'
             ;;
     esac
 else

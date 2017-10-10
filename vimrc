@@ -50,6 +50,8 @@ autocmd FileType make setlocal noexpandtab
 " Use two space indentation with html
 autocmd FileType html setlocal shiftwidth=2
 autocmd FileType html setlocal smarttab
+autocmd FileType jsx setlocal smarttab
+autocmd FileType jsx setlocal shiftwidth=2
 
 " Escape from insert and visual mode with 'jk'
 inoremap jk <esc>
@@ -80,17 +82,20 @@ nnoremap <leader>d :q<esc>
 nnoremap <leader>bs <c-w><c-x><c-w><c-w>
 vnoremap <leader>bs <c-w><c-x><c-w><c-w>gv
 
-" Edit and source vimrc
-nnoremap <leader>ve :tabe $MYVIMRC<cr>
-nnoremap <leader>vs :source $MYVIMRC<cr>
-
 " cd to buffer's path
 nnoremap <leader>bc :cd %:p:h<cr>
 vnoremap <leader>bc :cd %:p:h<cr>gv
 
-" Toggle relative number mode
-nnoremap <leader>r :call ToggleRelativeNumber()<cr>
-vnoremap <leader>r :call ToggleRelativeNumber()<cr>gv
+" Set flag
+nnoremap <leader>sp :call TogglePaste()<cr>
+nnoremap <leader>sn :call ToggleNumber()<cr>
+nnoremap <leader>sr :call ToggleRelativeNumber()<cr>
+vnoremap <leader>sr :call ToggleRelativeNumber()<cr>gv
+
+" Edit and source vimrc
+nnoremap <leader>ve :tabe $MYVIMRC<cr>
+nnoremap <leader>vs :source $MYVIMRC<cr>
+
 function! ToggleRelativeNumber()
     if (&relativenumber ==? 0)
         set relativenumber
@@ -100,6 +105,21 @@ function! ToggleRelativeNumber()
     endif
 endfunction
 
+function! ToggleNumber()
+    if (&number ==? 0)
+        set number
+    elseif (&number ==? 1)
+        set nonumber
+    endif
+endfunction
+
+function! TogglePaste()
+    if (&paste ==? 0)
+        set paste
+    elseif (&paste ==? 1)
+        set nopaste
+    endif
+endfunction
 
 " Faster copy paste for GUI vim
 nnoremap <leader>y "+yy

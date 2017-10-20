@@ -1,0 +1,53 @@
+{
+    "editor.lineNumbers": "relative",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/log_*": true
+    },
+    "vim.disableAnnoyingNeovimMessage": true,
+
+    // Improve search highlighting
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+
+    // Sidestep extra yanking keystrokes and complexities
+    "vim.useSystemClipboard": true,
+
+    "vim.leader": "<space>",
+    "vim.useCtrlKeys": false,
+    "vim.insertModeKeyBindings": [
+        {
+            // Faster insert mode exit
+            "before": ["j","k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            // Faster saving
+            "before": ["<leader>", "f"],
+            "after": [],
+            "commands": [
+                {
+                    "command": ":w"
+                }
+            ]
+        }
+    ],
+
+    // Do not overwrite important shortcuts
+    "vim.handleKeys":{
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-c>": false
+    },
+
+    // Use the natively supported vim plugins
+    "vim.surround": true,
+    "vim.visualstar": true,
+    "vim.easymotion": true
+}

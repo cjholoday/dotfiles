@@ -95,6 +95,10 @@ vnoremap <leader>sr :call ToggleRelativeNumber()<cr>gv
 nnoremap <leader>ve :tabe $MYVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
+" Easymotion
+let g:EasyMotion_smartcase = 1
+nmap t <Plug>(easymotion-overwin-f2)
+
 function! ToggleRelativeNumber()
     if (&relativenumber ==? 0)
         set relativenumber

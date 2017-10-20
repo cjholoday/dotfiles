@@ -76,7 +76,6 @@ nnoremap <leader>m :tabmove<esc>
 
 " Quickly save and exit a file
 nnoremap <leader>f :w<esc>
-nnoremap <leader>d :q<esc>
 
 " Swap buffers in a two way split and stay in the current buffer
 nnoremap <leader>bs <c-w><c-x><c-w><c-w>

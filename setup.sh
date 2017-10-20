@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/sh
 
 # Usage: sh setup.sh [force] [machine_id]
 #
@@ -10,6 +10,20 @@
 # with symlinks
 force="$1"
 machine_id="$2"
+
+
+try_symlink() {
+    # While not strictly POSIX, 'local' really should be used here
+    local force="$1"
+    local dotfile_path="$2"
+    local target="$3"
+
+    if [ "$force" != "FORCE" ] && [ -f "$target" ]; then
+        printf "warning: '$target' already exists. skipping it...\n"
+    else
+        ln -sf "$dotfile_path" "$target"
+    fi
+}
 
 # create .user.gitconfig if it doesn't exist
 touch user.gitconfig
@@ -30,10 +44,14 @@ fi
 # symlink all the dotfiles into $HOME
 set -f # disable globbing
 for dotfile in $dotfiles; do
-    if [ "$force" != "FORCE" ] && [ -f "$HOME/.$dotfile" ]; then
-        printf "warning: '$HOME/$dotfile' already exists. skipping it...\n"
-    else
-        ln -sf "$dotfiles_path/$dotfile" "$HOME/.$dotfile"
-    fi
+    try_symlink "$force" "$dotfiles_path/$dotfile" "$HOME/.$dotfile"
+    #if [ "$force" != "FORCE" ] && [ -f "$HOME/.$dotfile" ]; then
+    #    printf "warning: '$HOME/$dotfile' already exists. skipping it...\n"
+    #else
+    #    ln -sf "$dotfiles_path/$dotfile" "$HOME/.$dotfile"
+    #fi
 done
 set +f # re-enable globbing
+
+try_symlink "$force" "$dotfiles_path/vscode_settings.json" \
+    "$HOME/Library/Application Support/Code/User/settings.json"

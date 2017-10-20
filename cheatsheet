@@ -4,3 +4,7 @@ name=$(echo $filename | cut -f 1 -d '.')
 # deletes any prefix up to and including the last slash '/'
 basename
 
+# used to get the directory in which a script is located within that script
+# this trick is NOT bulletproof, but it will work 99 percent of the time and 
+# is suitable for one off scripts. It should NOT be used in production
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

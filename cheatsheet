@@ -8,3 +8,25 @@ basename
 # this trick is NOT bulletproof, but it will work 99 percent of the time and 
 # is suitable for one off scripts. It should NOT be used in production
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# configuring ssh 
+
+# format for ~/.ssh/config by example
+# example:
+Host caen
+    HostName oncampus-course.engin.umich.edu
+    User choloday
+
+# useful packages (commands are for osx and ubuntu respectively)
+
+brew install the_silver_searcher
+apt-get install silversearcher-ag
+
+brew install autojump
+sudo apt-get install autojump
+
+brew install tree
+sudo apt-get install tree
+
+brew install wget
+sudo apt-get install wget

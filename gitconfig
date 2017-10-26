@@ -16,6 +16,12 @@
     pl = pull
     rb = rebase
     ae = add --all :/
+
+    # submodule aliases
+    sdf = !git diff && git submodule foreach 'git diff'
+    sps = push --recurse-submodules=on-demand
+    sud = submodule update --remote --merge
+
 [core]
     editor = vim
     excludesfile = ~/.gitignore

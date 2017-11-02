@@ -46,7 +46,11 @@ alias fgrep="fgrep --color"
 alias cheat="vim ~/.cheatsheet"
 alias bs=". ~/.bashrc"
 
-alias eg="export GOPATH=$(pwd)"
+function set_gopath {
+    export GOPATH="$(pwd)"
+}
+
+alias eg="set_gopath"
 
 # update dotfiles, symlink any new ones, and update vim plugins
 alias dotdate="pushd $HOME/dotfiles; \

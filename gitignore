@@ -5,6 +5,9 @@
 [._]sw[a-p]
 ses.vim
 
+# Vscode
+.vscode/
+
 # C/C++
 *.o
 *.i

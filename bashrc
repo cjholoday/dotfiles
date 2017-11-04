@@ -36,7 +36,13 @@ alias showme="grep -rnw . -e "
 # used to login into my virtualbox vm
 alias vmlogin="ssh -p 3022 "$USER"@127.0.0.1"
 
-alias ls='ls -G'
+# ls syntax varies
+if [ "$(uname)" = "Darwin" ]; then
+    alias ls='ls -G'
+elif [ "$(uname)" = "Linux" ]; then
+    alias ls='ls --color'
+fi
+
 alias m="make"
 alias p="python"
 alias p3="python3"

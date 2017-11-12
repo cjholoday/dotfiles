@@ -46,11 +46,6 @@ fi
 set -f # disable globbing
 for dotfile in $dotfiles; do
     try_symlink "$force" "$dotfiles_path/$dotfile" "$HOME/.$dotfile"
-    #if [ "$force" != "FORCE" ] && [ -f "$HOME/.$dotfile" ]; then
-    #    printf "warning: '$HOME/$dotfile' already exists. skipping it...\n"
-    #else
-    #    ln -sf "$dotfiles_path/$dotfile" "$HOME/.$dotfile"
-    #fi
 done
 set +f # re-enable globbing
 

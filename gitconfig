@@ -18,6 +18,7 @@
     rb = rebase
     ae = add --all :/
     rs = reset
+    ce = !git add --all :/ && git commit
 
     # submodule aliases
     sdf = !git diff && git submodule foreach 'git diff'

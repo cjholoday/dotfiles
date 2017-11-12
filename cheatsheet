@@ -36,3 +36,8 @@ sudo apt-get install wget
 if [ -z "$(command -v ls)" ]; then
     echo "ls not found"
 fi
+
+# Git user setting format
+[user]
+    name = Colton Holoday
+    email = emailname@gmail.com

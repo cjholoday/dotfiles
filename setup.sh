@@ -26,9 +26,10 @@ try_symlink() {
 }
 
 # create .user.gitconfig if it doesn't exist
-touch user.gitconfig
+touch local_gitconfig
+touch local_bashrc
 
-dotfiles="bash_profile bashrc vimrc cheatsheet gitconfig user.gitconfig gitignore inputrc"
+dotfiles="bash_profile bashrc vimrc cheatsheet gitconfig local_gitconfig local_bashrc gitignore inputrc"
 dotfiles_path="$HOME/dotfiles"
 
 # do a sanity check that the repo is placed in the correct directory

@@ -1,55 +1,37 @@
-#!/bin/sh
-
-# Usage: sh setup.sh [force] [machine_id]
+#!/bin/bash
 #
-# [machine_id] will be written to a file named machine_id in the dotfiles directory. It
-# is used to identify which machine this installation is for. This is useful for 
-# determining which PS1 to use, for example
-#
-# If any string is passed for the force argument, then files in $HOME will be overwritten
-# with symlinks
-force="$1"
-machine_id="$2"
+# Purpose: Manage setup of dotfiles
 
-
-try_symlink() {
-    # While not strictly POSIX, 'local' really should be used here
-    local force="$1"
-    local dotfile_path="$2"
-    local target="$3"
-
-    if [ "$force" != "FORCE" ] && [ -f "$target" ]; then
-        printf "warning: '$target' already exists. skipping it...\n"
-    else
-        ln -sf "$dotfile_path" "$target"
+# Check if the latest command failed
+function check {
+    if [ "$?" != "0" ]; then
+        echo "failed check: $1"
+        exit 1
     fi
 }
 
-# create .user.gitconfig if it doesn't exist
-touch local_gitconfig
-touch local_bashrc
+cd "$HOME/dotfiles"
+check "failed to find dotfiles directory" || exit 1
 
-dotfiles="bash_profile bashrc vimrc cheatsheet gitconfig local_gitconfig local_bashrc gitignore inputrc"
-dotfiles_path="$HOME/dotfiles"
+required_commands="curl git vim"
+missing_required_command=0
 
-# do a sanity check that the repo is placed in the correct directory
-if [ ! -d "$dotfiles_path" ] || [ ! -f "$dotfiles_path/setup.sh" ]; then
-    printf 'error: the dotfiles repository must be placed in $HOME\n'
+set -f # disable globbing
+for command in $required_commands; do
+    if [ -z "$(command -v "$command")" ]; then
+        echo "Missing required command '$command'" >&2
+        missing_required_command=1
+    fi
+done
+set +f # enable globbing
+if [ "$missing_required_command" = 1 ]; then
     exit 1
 fi
 
-if [ ! -z "$machine_id" ]; then
-    echo "$machine_id" > "$dotfiles_path"/machine_id
-fi
+printf "\n\n*** Symlinking dotfiles...\n\n"
+sh symlink.sh
+check "'sh symlink.sh' failed!" || exit 1
 
-# symlink all the dotfiles into $HOME
-set -f # disable globbing
-for dotfile in $dotfiles; do
-    try_symlink "$force" "$dotfiles_path/$dotfile" "$HOME/.$dotfile"
-done
-set +f # re-enable globbing
-
-if [ "$(uname)" == "Darwin" ]; then
-    try_symlink "$force" "$dotfiles_path/vscode_settings.json" \
-        "$HOME/Library/Application Support/Code/User/settings.json"
-fi
+printf "\n\n*** Upgrading vim with plugins...\n\n"
+sh upgrade_vim.sh
+check "'sh upgrade_vim.sh' failed!" || exit 1

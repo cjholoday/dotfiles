@@ -5,21 +5,6 @@
 # only install the plugin manager if it hasn't already been installed. This allows
 # us to use this bash script to update plugins as well as install them
 
-required_commands="curl git"
-missing_required_command=0
-
-set -f # disable globbing
-for command in $required_commands; do
-    if [ -z "$(command -v "$command")" ]; then
-        echo "Missing required command '$command'"
-        missing_required_command=1
-    fi
-done
-set +f # enable globbing
-if [ "$missing_required_command" = 1 ]; then
-    exit 1
-fi
-
 if [ ! -f ~/.vim/autoload/pathogen.vim ]; then
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
         curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim

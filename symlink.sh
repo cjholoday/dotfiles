@@ -49,7 +49,7 @@ for dotfile in $dotfiles; do
 done
 set +f # re-enable globbing
 
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
     try_symlink "$force" "$dotfiles_path/vscode_settings.json" \
         "$HOME/Library/Application Support/Code/User/settings.json"
 fi

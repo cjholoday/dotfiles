@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 #
 # Purpose: Manage setup of dotfiles
 
 # Check if the latest command failed
-function check {
+check() {
     if [ "$?" != "0" ]; then
         echo "failed check: $1"
         exit 1

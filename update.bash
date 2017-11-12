@@ -2,7 +2,7 @@
 #
 # Update the dotfiles to reflect any new changes
 
-function check {
+check() {
     if [ "$?" != "0" ]; then
         echo "failed check: $1"
         exit 1

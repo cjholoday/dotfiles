@@ -1,4 +1,4 @@
-#!bin/sh 
+#!/bin/bash 
 
 ###########################################################
 # Support machine dependent bashrc additions
@@ -53,7 +53,7 @@ alias egrep="egrep --color"
 alias fgrep="fgrep --color"
 alias cheat="vim ~/.cheatsheet"
 
-function set_gopath {
+set_gopath() {
     start_dir="$(pwd)"
 
     # Try to find the root of a git repository above us. If we find one,
@@ -74,7 +74,7 @@ function set_gopath {
     cd "$start_dir"
 }
 
-function find_ctx_root {
+find_ctx_root() {
     local sentinel="$1"
 
     start_dir="$(pwd)"
@@ -97,7 +97,7 @@ function find_ctx_root {
     echo "$start_dir"
 }
 
-function git_root {
+git_root() {
     echo "$(find_ctx_root '\.git$')"
 }
 
@@ -110,10 +110,10 @@ alias sb=". ~/.bashrc"
 alias rb='cd $(git_root)'
 
 # update dotfiles, symlink any new ones, and update vim plugins
-alias dotdate="sh ~/dotfiles/update.sh"
+alias dotdate="bash ~/dotfiles/update.bash"
 
 # Find a file with a pattern in name (taken from github/awdeorio/dotfiles):
-function ff() { 
+ff() { 
     find . -type f -iwholename '*'$*'*' ;
 }
 

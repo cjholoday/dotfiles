@@ -53,27 +53,6 @@ alias egrep="egrep --color"
 alias fgrep="fgrep --color"
 alias cheat="vim ~/.cheatsheet"
 
-set_gopath() {
-    start_dir="$(pwd)"
-
-    # Try to find the root of a git repository above us. If we find one,
-    # set the path to it as our GOPATH. Otherwise, set GOPATH to our CWD
-    cwd="$start_dir"
-    while [ "$cwd" != '/' ]; do
-        if [ ! -z "$(ls -a | grep '^\.git$')" ]; then
-            export GOPATH="$cwd"
-            cd "$start_dir"
-            return
-        fi
-
-        cd ..
-        cwd="$(pwd)"
-    done
-
-    export GOPATH="$start_dir"
-    cd "$start_dir"
-}
-
 find_ctx_root() {
     local sentinel="$1"
 

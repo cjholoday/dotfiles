@@ -106,6 +106,9 @@ alias eg='export GOPATH="$(git_root)"'
 alias se='. "$(git_root)"/env/bin/activate'
 alias sb=". ~/.bashrc"
 
+# Jump up to a project's root
+alias rb='cd $(git_root)'
+
 # update dotfiles, symlink any new ones, and update vim plugins
 alias dotdate="sh ~/dotfiles/update.sh"
 

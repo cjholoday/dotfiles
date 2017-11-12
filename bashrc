@@ -54,7 +54,24 @@ alias fgrep="fgrep --color"
 alias cheat="vim ~/.cheatsheet"
 
 function set_gopath {
-    export GOPATH="$(pwd)"
+    start_dir="$(pwd)"
+
+    # Try to find the root of a git repository above us. If we find one,
+    # set the path to it as our GOPATH. Otherwise, set GOPATH is our CWD
+    cwd="$start_dir"
+    while [ "$cwd" != '/' ]; do
+        if [ ! -z "$(ls -a | grep '^\.git')" ]; then
+            export GOPATH="$cwd"
+            cd "$start_dir"
+            return
+        fi
+
+        cd ..
+        cwd="$(pwd)"
+    done
+
+    export GOPATH="$start_dir"
+    cd "$start_dir"
 }
 
 # Sourcing/Exporting

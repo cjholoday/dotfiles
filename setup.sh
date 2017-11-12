@@ -35,3 +35,10 @@ check "'sh symlink.sh' failed!" || exit 1
 printf "\n\n*** Upgrading vim with plugins...\n\n"
 sh upgrade_vim.sh
 check "'sh upgrade_vim.sh' failed!" || exit 1
+
+printf "\n\n*** REMEMBER TO SET CREDENTIALS FOR GIT\n"
+printf "Use the following template in '$HOME/dotfiles/local_gitconfig':\n\n" 
+
+printf "[user]\n"
+printf "    name = John Doe\n"
+printf "    email = emailname@gmail.com\n"

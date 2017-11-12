@@ -77,7 +77,7 @@ find_ctx_root() {
 }
 
 git_root() {
-    echo "$(find_ctx_root '\.git$')"
+    echo "$(find_ctx_root '^\.git$')"
 }
 
 # Sourcing/Exporting
@@ -86,7 +86,7 @@ alias se='. "$(git_root)"/env/bin/activate'
 alias sb=". ~/.bashrc"
 
 # Jump up to a project's root
-alias rb='cd $(git_root)'
+alias rb='cd "$(git_root)"'
 
 # update dotfiles, symlink any new ones, and update vim plugins
 alias dotdate="bash ~/dotfiles/update.bash"

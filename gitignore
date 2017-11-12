@@ -24,6 +24,7 @@ a.out
 log
 *.log
 *.errlog
+log*
 e
 m
 

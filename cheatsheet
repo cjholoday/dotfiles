@@ -30,3 +30,9 @@ sudo apt-get install tree
 
 brew install wget
 sudo apt-get install wget
+
+
+# if command is not available use another
+if [ -z "$(command -v ls)" ]; then
+    echo "ls not found"
+fi

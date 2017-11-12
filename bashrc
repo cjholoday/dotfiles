@@ -57,7 +57,7 @@ function set_gopath {
     start_dir="$(pwd)"
 
     # Try to find the root of a git repository above us. If we find one,
-    # set the path to it as our GOPATH. Otherwise, set GOPATH is our CWD
+    # set the path to it as our GOPATH. Otherwise, set GOPATH to our CWD
     cwd="$start_dir"
     while [ "$cwd" != '/' ]; do
         if [ ! -z "$(ls -a | grep '^\.git')" ]; then

@@ -60,7 +60,7 @@ function set_gopath {
     # set the path to it as our GOPATH. Otherwise, set GOPATH to our CWD
     cwd="$start_dir"
     while [ "$cwd" != '/' ]; do
-        if [ ! -z "$(ls -a | grep '^\.git')" ]; then
+        if [ ! -z "$(ls -a | grep '^\.git$')" ]; then
             export GOPATH="$cwd"
             cd "$start_dir"
             return
@@ -74,9 +74,36 @@ function set_gopath {
     cd "$start_dir"
 }
 
+function find_ctx_root {
+    local sentinel="$1"
+
+    start_dir="$(pwd)"
+
+    # Try to find a directory above us which has file or directory $sentinel
+    # If we don't find one, return the directory we started with
+    cwd="$start_dir"
+    while [ "$cwd" != '/' ]; do
+        if [ ! -z "$(ls -a | grep "$sentinel")" ]; then
+            cd "$start_dir"
+            echo "$cwd"
+            return
+        fi
+
+        cd ..
+        cwd="$(pwd)"
+    done
+
+    cd "$start_dir"
+    echo "$start_dir"
+}
+
+function git_root {
+    echo "$(find_ctx_root '\.git$')"
+}
+
 # Sourcing/Exporting
-alias eg="set_gopath"
-alias se='. env/bin/activate'
+alias eg='export GOPATH="$(git_root)"'
+alias se='. "$(git_root)"/env/bin/activate'
 alias sb=". ~/.bashrc"
 
 # update dotfiles, symlink any new ones, and update vim plugins

@@ -16,6 +16,7 @@
     pl = pull
     rb = rebase
     ae = add --all :/
+    rs = reset
 
     # submodule aliases
     sdf = !git diff && git submodule foreach 'git diff'

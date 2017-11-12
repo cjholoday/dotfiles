@@ -36,6 +36,7 @@ alias showme="grep -rnw . -e "
 # used to login into my virtualbox vm
 alias vmlogin="ssh -p 3022 "$USER"@127.0.0.1"
 
+
 # ls syntax varies
 if [ "$(uname)" = "Darwin" ]; then
     alias ls='ls -G'
@@ -45,18 +46,21 @@ fi
 
 alias m="make"
 alias p="python"
+alias g="git"
 alias p3="python3"
 alias grep="grep --color"
 alias egrep="egrep --color"
 alias fgrep="fgrep --color"
 alias cheat="vim ~/.cheatsheet"
-alias bs=". ~/.bashrc"
 
 function set_gopath {
     export GOPATH="$(pwd)"
 }
 
+# Sourcing/Exporting
 alias eg="set_gopath"
+alias se='. env/bin/activate'
+alias sb=". ~/.bashrc"
 
 # update dotfiles, symlink any new ones, and update vim plugins
 alias dotdate="pushd $HOME/dotfiles; \

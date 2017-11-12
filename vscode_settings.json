@@ -53,5 +53,6 @@
     // Use the natively supported vim plugins
     "vim.surround": true,
     "vim.visualstar": true,
-    "vim.easymotion": true
+    "vim.easymotion": true,
+    "extensions.ignoreRecommendations": false
 }

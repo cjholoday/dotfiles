@@ -55,14 +55,21 @@ alias cheat="vim ~/.cheatsheet"
 
 find_ctx_root() {
     local sentinel="$1"
-
     start_dir="$(pwd)"
+
+    ls_command=""
+    if [ "$(uname)" = "Darwin" ]; then
+        ls_command="ls -a"
+    else
+        # turn off coloring so grep regex works as intended
+        ls_command="ls --color=never -a"
+    fi
 
     # Try to find a directory above us which has file or directory $sentinel
     # If we don't find one, return the directory we started with
     cwd="$start_dir"
     while [ "$cwd" != '/' ]; do
-        if [ ! -z "$(ls -a | grep "$sentinel")" ]; then
+        if [ ! -z "$($ls_command | grep "$sentinel")" ]; then
             cd "$start_dir"
             echo "$cwd"
             return

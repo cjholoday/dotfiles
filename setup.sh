@@ -36,6 +36,20 @@ printf "\n\n*** Upgrading vim with plugins...\n\n"
 sh upgrade_vim.sh
 check "'sh upgrade_vim.sh' failed!" || exit 1
 
+
+printf "\n\n*** Setting git credentials...\n\n"
+printf "Enter your full name: "
+read fullname
+printf "Enter your email: "
+read email
+printf "[user]\n    name = $fullname\n    email = $email\n" > local_gitconfig
+check "could not write to $HOME/local_gitconfig" || exit 1
+
+printf "\n\n*** Setting machine id to cusomize bash prompt...\n\n"
+printf "Enter a machine identifier: "
+read machine_id
+printf "$machine_id" > machine_id
+
 printf "\n\n*** Check if recommended commands are installed...\n"
 recommended_commands="autojump tree ag wget"
 set -f # disable globbing
@@ -45,10 +59,3 @@ for command in $recommended_commands; do
     fi
 done
 set +f # enable globbing
-
-printf "\n\n*** REMEMBER TO SET CREDENTIALS FOR GIT\n"
-printf "Use the following template in '$HOME/dotfiles/local_gitconfig':\n\n" 
-
-printf "[user]\n"
-printf "    name = John Doe\n"
-printf "    email = emailname@gmail.com\n"

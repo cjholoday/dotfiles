@@ -36,6 +36,16 @@ printf "\n\n*** Upgrading vim with plugins...\n\n"
 sh upgrade_vim.sh
 check "'sh upgrade_vim.sh' failed!" || exit 1
 
+printf "\n\n*** Check if recommended commands are installed...\n"
+recommended_commands="autojump tree ag wget"
+set -f # disable globbing
+for command in $recommended_commands; do
+    if [ -z "$(command -v "$command")" ]; then
+        echo "Consider installing '$command'"
+    fi
+done
+set +f # enable globbing
+
 printf "\n\n*** REMEMBER TO SET CREDENTIALS FOR GIT\n"
 printf "Use the following template in '$HOME/dotfiles/local_gitconfig':\n\n" 
 

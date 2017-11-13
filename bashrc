@@ -92,6 +92,15 @@ alias eg='export GOPATH="$(git_root)"'
 alias se='. "$(git_root)"/env/bin/activate'
 alias sb=". ~/.bashrc"
 
+
+double_autojump() {
+    arg="$1"
+    cd "$(autojump "$arg")"
+    cd "$(autojump "$arg")"
+}
+
+alias jj='double_autojump' 
+
 # Jump up to a project's root
 alias rb='cd "$(git_root)"'
 

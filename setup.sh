@@ -28,8 +28,9 @@ if [ "$missing_required_command" = 1 ]; then
     exit 1
 fi
 
+# collisions are stored as .old.*-TIMESTAMP in $HOME
 printf "\n\n*** Symlinking dotfiles...\n\n"
-sh symlink.sh
+sh symlink.sh STASH
 check "'sh symlink.sh' failed!" || exit 1
 
 printf "\n\n*** Upgrading vim with plugins...\n\n"

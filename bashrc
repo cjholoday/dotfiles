@@ -5,8 +5,8 @@
 ###########################################################
 
 # all per-system bashrc customizations are put in dotfiles/bashrc_local
-if [ -f "~/.local_bashrc" ]; then
-    . "~/.local_bashrc"
+if [ -f "$HOME/.local_bashrc" ]; then
+    . "$HOME/.local_bashrc"
 fi
 
 ###########################################################

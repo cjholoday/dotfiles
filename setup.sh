@@ -46,12 +46,12 @@ read email
 printf "[user]\n    name = $fullname\n    email = $email\n" > local_gitconfig
 check "could not write to $HOME/local_gitconfig" || exit 1
 
-printf "\n\n*** Setting machine id to cusomize bash prompt...\n\n"
+printf "\n\n*** Setting machine id to customize bash prompt...\n\n"
 printf "Enter a machine identifier: "
 read machine_id
 printf "$machine_id" > machine_id
+printf "\n"
 
-printf "\n\n*** Check if recommended commands are installed...\n"
 recommended_commands="autojump tree ag wget"
 set -f # disable globbing
 for command in $recommended_commands; do

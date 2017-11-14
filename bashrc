@@ -88,6 +88,7 @@ git_root() {
 }
 
 # Sourcing/Exporting
+alias e='export'
 alias eg='export GOPATH="$(git_root)"'
 alias se='. "$(git_root)"/env/bin/activate'
 alias sb=". ~/.bashrc"

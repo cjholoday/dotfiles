@@ -54,5 +54,6 @@
     "vim.surround": true,
     "vim.visualstar": true,
     "vim.easymotion": true,
-    "extensions.ignoreRecommendations": false
+    "extensions.ignoreRecommendations": false,
+    "go.inferGopath": true
 }

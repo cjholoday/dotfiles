@@ -55,5 +55,9 @@
     "vim.visualstar": true,
     "vim.easymotion": true,
     "extensions.ignoreRecommendations": false,
-    "go.inferGopath": true
+    "go.inferGopath": true,
+    "go.formatTool": "gofmt",
+    "editor.formatOnSave": true,
+    "go.formatOnSave": true,
+    "go.useDiffForFormatting": false
 }

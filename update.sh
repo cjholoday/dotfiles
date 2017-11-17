@@ -23,6 +23,3 @@ check "'sh symlink.sh' failed!" || exit 1
 printf "\n\n*** Upgrading vim with plugins...\n\n"
 sh upgrade_vim.sh
 check "'sh upgrade_vim.sh' failed!" || exit 1
-
-. ~/.bashrc
-check "error in sourcing ~/.bashrc" || exit 1

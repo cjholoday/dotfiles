@@ -18,7 +18,7 @@ cd dotfiles
 . ~/.bashrc
 ```
 
-You may have seen lines similar to following while running ```setup.sh```:
+You may have seen lines similar to the following while running ```setup.sh```:
 
 ```
 warning: symlink collision with '/Users/colton/.bashrc'
@@ -29,7 +29,7 @@ This means you had existing dotfiles installed in ```$HOME``` before running ```
 
 ## Updating
 
-Run either of the following to update to the latest version:
+Run either command below to update to the latest version:
 
 ```
 # Bash users only. Works from any directory!
@@ -37,6 +37,7 @@ dotdate
 
 # Works even without bash
 sh ~/dotfiles/update.sh
+. ~/.bashrc
 ```
 
 These work by pulling from this repository, then re-running ```symlink.sh``` and ```upgrade_vim.sh```. If you have any uncommited changes on one these dotfiles, pulling will fail. For that reason, using ```~/dotfiles/local_bashrc``` and ```~/dotfiles/local_gitconfig``` to store per-computer changes is ideal.

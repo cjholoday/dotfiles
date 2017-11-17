@@ -106,7 +106,7 @@ alias jj='double_autojump'
 alias rb='cd "$(git_root)"'
 
 # update dotfiles, symlink any new ones, and update vim plugins
-alias dotdate="bash ~/dotfiles/update.bash && . ~/.bashrc"
+alias dotdate="sh ~/dotfiles/update.sh && . ~/.bashrc"
 
 # Find a file with a pattern in name (taken from github/awdeorio/dotfiles):
 ff() { 

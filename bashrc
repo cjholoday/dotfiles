@@ -12,8 +12,8 @@ fi
 ###########################################################
 # autojump
 ###########################################################
-[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
-
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
+[[ -s /usr/share/autojump/autojump.sh ]] && . /usr/share/autojump/autojump.sh
 
 ###########################################################
 # aliases

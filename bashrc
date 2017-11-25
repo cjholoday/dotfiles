@@ -36,6 +36,13 @@ alias showme="grep -rnw . -e "
 # used to login into my virtualbox vm
 alias vmlogin="ssh -p 3022 "$USER"@127.0.0.1"
 
+# print out disk usage for everything in cwd and sort the results
+SORT=sort
+if [ "$(uname)" = Darwin ]; then 
+    SORT=gsort
+fi
+alias dus='du -sh * | "$SORT" -h'
+
 
 # ls syntax varies
 if [ "$(uname)" = "Darwin" ]; then

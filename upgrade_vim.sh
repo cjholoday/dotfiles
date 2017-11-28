@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/sh
 #
 # A script for setting up and updating vim plugins
 

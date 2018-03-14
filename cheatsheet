@@ -41,3 +41,13 @@ fi
 [user]
     name = Colton Holoday
     email = emailname@gmail.com
+
+# select N random lines from FILE
+shuf -n N FILE
+
+# ssh into vm (assuming it's setup to listen on port 3022)
+ssh -p 3022 username@127.0.0.1
+
+# guide to enlarge vm hard disk
+https://forums.virtualbox.org/viewtopic.php?f=35&t=50661
+VBoxManage modifyhd <absolute path to file> --resize <size in MB>

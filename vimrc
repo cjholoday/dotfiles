@@ -91,6 +91,7 @@ vnoremap <leader>bc :cd %:p:h<cr>gv
 " Set flag
 nnoremap <leader>sp :call TogglePaste()<cr>
 nnoremap <leader>sn :call ToggleNumber()<cr>
+nnoremap <leader>sw :call ToggleWrap()<cr>
 nnoremap <leader>sr :call ToggleRelativeNumber()<cr>
 vnoremap <leader>sr :call ToggleRelativeNumber()<cr>gv
 
@@ -116,6 +117,14 @@ function! ToggleNumber()
         set number
     elseif (&number ==? 1)
         set nonumber
+    endif
+endfunction
+
+function! ToggleWrap()
+    if (&wrap ==? 0)
+        set wrap
+    elseif (&wrap ==? 1)
+        set nowrap
     endif
 endfunction
 

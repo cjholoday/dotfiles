@@ -36,6 +36,11 @@ alias showme="grep -rnw . -e "
 # used to login into my virtualbox vm
 alias vmlogin="ssh -p 3022 "$USER"@127.0.0.1"
 
+alias falcone="ssh colton@alabxeon.eecs.umich.edu"
+alias team583="ssh team583@alabxeon.eecs.umich.edu"
+alias cssh='ssh choloday@eecs583b.eecs.umich.edu'
+alias dijkstra='ssh choloday@dijkstra.eecs.umich.edu'
+
 # print out disk usage for everything in cwd and sort the results
 SORT=sort
 if [ "$(uname)" = Darwin ]; then 
@@ -43,6 +48,7 @@ if [ "$(uname)" = Darwin ]; then
 fi
 alias dus='du -sh * | "$SORT" -h'
 
+bind '"\t":menu-complete'
 
 # ls syntax varies
 if [ "$(uname)" = "Darwin" ]; then
@@ -54,6 +60,7 @@ fi
 alias m="make"
 alias p="python"
 alias g="git"
+alias v="iverilog"
 alias p3="python3"
 alias grep="grep --color"
 alias egrep="egrep --color"

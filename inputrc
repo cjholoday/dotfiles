@@ -12,7 +12,6 @@ set match-hidden-files off
 # handles completion gracefully when cursor is behind the end of inputted text
 set skip-completed-text on  
 set mark-symlinked-directories on
-set show-all-if-unmodified on
 
 # display all completion results on first tab press
-set show-all-if-ambiguous on
+set show-all-if-ambiguous off 

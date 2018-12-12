@@ -48,8 +48,6 @@ if [ "$(uname)" = Darwin ]; then
 fi
 alias dus='du -sh * | "$SORT" -h'
 
-bind '"\t":menu-complete'
-
 # ls syntax varies
 if [ "$(uname)" = "Darwin" ]; then
     alias ls='ls -G'

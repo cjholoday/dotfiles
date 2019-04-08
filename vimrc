@@ -17,6 +17,13 @@ else
     syntax on
     hi Search cterm=NONE ctermfg=Black ctermbg=White cterm=BOLD
     hi ColorColumn ctermbg=Blue 
+
+    " Make vimdiff look better
+    hi DiffChange gui=none ctermfg=NONE ctermbg=darkgrey
+    hi DiffText gui=none ctermfg=NONE ctermbg=darkmagenta
+    hi DiffAdd gui=none ctermfg=NONE ctermbg=darkblue
+    hi DiffDelete gui=none ctermfg=NONE ctermbg=darkblue
+
 endif
 
 execute pathogen#infect()

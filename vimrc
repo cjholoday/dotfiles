@@ -23,6 +23,7 @@ else
     hi DiffText gui=none ctermfg=NONE ctermbg=darkmagenta
     hi DiffAdd gui=none ctermfg=NONE ctermbg=darkblue
     hi DiffDelete gui=none ctermfg=NONE ctermbg=darkblue
+    hi Folded ctermbg=Black
 
 endif
 
@@ -105,6 +106,9 @@ vnoremap <leader>sr :call ToggleRelativeNumber()<cr>gv
 " Edit and source vimrc
 nnoremap <leader>ve :tabe $MYVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
+
+nnoremap <leader>ui :qa<cr>
+nnoremap <leader>uo Odebug(1) << "\n**placeholder**\n";<cr>debug(1) << s;<esc>jodebug(1) << "\n**&**\n";<cr>debug(1) << s;<cr>debug(1) << "\n**end**\n";<esc>5k0fp;
 
 " Easymotion
 let g:EasyMotion_smartcase = 1

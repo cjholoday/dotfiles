@@ -39,7 +39,11 @@ alias vmlogin="ssh -p 3022 "$USER"@127.0.0.1"
 alias falcone="ssh colton@alabxeon.eecs.umich.edu"
 alias team583="ssh team583@alabxeon.eecs.umich.edu"
 alias cssh='ssh choloday@eecs583b.eecs.umich.edu'
-alias dijkstra='ssh choloday@dijkstra.eecs.umich.edu'
+alias dijkstra='ssh -Y choloday@dijkstra.eecs.umich.edu'
+alias deadshot='ssh choloday@deadshot.eecs.umich.edu'
+alias cook1='ssh choloday@cook1.eecs.umich.edu'
+alias rapidan='ssh choloday@rapidan.eecs.umich.edu'
+
 
 # print out disk usage for everything in cwd and sort the results
 SORT=sort
@@ -155,7 +159,7 @@ if [ -f "$dotfiles_path/machine_id" ]; then
             ;;
         *)
             # blue PS1
-            PS1='\[\e[1;36m\]\w: \[\e[0m\]'
+            PS1="\[\033[01;38;5;130m\]${machine_id}$ \w: \[\033[0m\]"
             ;;
     esac
 else

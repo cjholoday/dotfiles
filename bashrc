@@ -43,6 +43,8 @@ alias dijkstra='ssh -Y choloday@dijkstra.eecs.umich.edu'
 alias deadshot='ssh choloday@deadshot.eecs.umich.edu'
 alias cook1='ssh choloday@cook1.eecs.umich.edu'
 alias rapidan='ssh choloday@rapidan.eecs.umich.edu'
+alias hopper='ssh choloday@hopper.eecs.umich.edu'
+alias liskov='ssh choloday@liskov.eecs.umich.edu'
 
 
 # print out disk usage for everything in cwd and sort the results

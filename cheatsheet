@@ -51,3 +51,6 @@ ssh -p 3022 username@127.0.0.1
 # guide to enlarge vm hard disk
 https://forums.virtualbox.org/viewtopic.php?f=35&t=50661
 VBoxManage modifyhd <absolute path to file> --resize <size in MB>
+
+# add public key to server to avoid typing a password every time
+ssh-copy-id remote_username@server_ip_address

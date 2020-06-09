@@ -1,5 +1,5 @@
 {
-    "editor.lineNumbers": "relative",
+    "editor.lineNumbers": "on",
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -9,47 +9,42 @@
         "**/log_*": true
     },
     "vim.disableAnnoyingNeovimMessage": true,
-
     // Improve search highlighting
     "vim.incsearch": true,
     "vim.hlsearch": true,
-
     // Sidestep extra yanking keystrokes and complexities
     "vim.useSystemClipboard": true,
-
     "vim.leader": "<space>",
     "vim.useCtrlKeys": true,
     "vim.insertModeKeyBindings": [
         {
             // Faster insert mode exit
-            "before": ["j","k"],
-            "after": ["<Esc>"]
-        }
-    ],
-    "vim.otherModesKeyBindingsNonRecursive": [
-        {
-            // Faster saving
-            "before": ["<leader>", "f"],
-            "after": [],
-            "commands": [
-                {
-                    "command": ":w"
-                }
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
             ]
-        },
-        {
-            "before": ["t"],
-            "after": ["leader", "leader", "2", "s"]
         }
     ],
-
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "leader",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.files.save",
+            ]
+        }
+    ],
     // Do not overwrite important shortcuts
-    "vim.handleKeys":{
+    "vim.handleKeys": {
         "<C-a>": false,
         "<C-f>": false,
         "<C-c>": false
     },
-
     // Use the natively supported vim plugins
     "vim.surround": true,
     "vim.visualstar": true,
@@ -61,9 +56,12 @@
     "go.formatOnSave": true,
     "go.useDiffForFormatting": false,
     "python.formatting.formatOnSave": true,
-    "python.linting.pep8Enabled": true,
+    "python.linting.pycodestyleEnabled": true,
     "python.linting.pydocstyleEnabled": true,
     "python.linting.pylintEnabled": true,
     "editor.wrappingIndent": "indent",
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "window.zoomLevel": 0,
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Attach, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",
+    "git.ignoreLegacyWarning": true
 }

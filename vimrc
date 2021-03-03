@@ -166,3 +166,11 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " ctags: index current directory
 nnoremap <leader>t :cd %:p:h<cr>:!ctags -R .<cr><cr>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""" 
+" Mathworks Configurations
+"""""""""""""""""""""""""""""""""""""""""""""""""" 
+
+if !exists("$SBVIM_CFG")
+    let $SBVIM_CFG = 'default'
+endif
+source //mathworks/hub/share/sbtools/vimrc

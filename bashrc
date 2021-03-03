@@ -164,6 +164,19 @@ if [ -f "$dotfiles_path/machine_id" ]; then
             PS1="\[\033[01;38;5;130m\]${machine_id}$ \w: \[\033[0m\]"
             ;;
     esac
-else
-    printf "Error: Run the dotfiles setup script before using .bashrc!\n"
+fi
+
+###########################################################
+# Mathworks Configuration
+###########################################################
+
+if [ -f "$dotfiles_path/machine_id" ]; then
+    machine_id="$(cat "$dotfiles_path/machine_id")" 
+    if [ "$machine_id" = ah-choloday-l ]; then
+        . /mathworks/hub/share/sbtools/bash_setup.bash
+
+        # Perforce colorschemes
+        export P4COLORS="@info=0:@error=31;1:@warning=35;1:action=36;1:how:36:change=34:depotFile=32:path=32:location=32:rev=31:depotRev=31"
+        #   export P4COLORS="@info=0:@error=31;1:@warning=35;1:action=36;1:how:36:change=33:depotFile=32:path=32:location=32:rev=31:depotRev=31"
+    fi
 fi

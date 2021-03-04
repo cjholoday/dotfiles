@@ -108,8 +108,8 @@ git_root() {
 # Sourcing/Exporting
 alias e='export'
 alias eg='export GOPATH="$(git_root)"'
-alias se='. "$(git_root)"/env/bin/activate'
-alias sb=". ~/.bashrc"
+alias srce='. "$(git_root)"/env/bin/activate'
+alias srcb=". ~/.bashrc"
 
 
 double_autojump() {
@@ -131,6 +131,21 @@ ff() {
     find . -type f -iwholename '*'$*'*' ;
 }
 
+
+###########################################################
+# Mathworks Configuration
+###########################################################
+
+if [ -f "$dotfiles_path/machine_id" ]; then
+    machine_id="$(cat "$dotfiles_path/machine_id")" 
+    if [ "$machine_id" = ah-choloday-l ]; then
+        . /mathworks/hub/share/sbtools/bash_setup.bash
+
+        # Perforce colorschemes
+        export P4COLORS="@info=0:@error=31;1:@warning=35;1:action=36;1:how:36:change=34:depotFile=32:path=32:location=32:rev=31:depotRev=31"
+        #   export P4COLORS="@info=0:@error=31;1:@warning=35;1:action=36;1:how:36:change=33:depotFile=32:path=32:location=32:rev=31:depotRev=31"
+    fi
+fi
 
 ###########################################################
 # Detect the machine id and use the corresponding PS1
@@ -155,6 +170,10 @@ if [ -f "$dotfiles_path/machine_id" ]; then
             # yellow PS1
             PS1='\[\e[1;33m\]research$ \w: \[\e[0m\]'
             ;;
+        "ah-choloday-l")
+            # yellow PS1
+            PS1="\[\033[01;38;5;130m\][ah-choloday-l:\w] ...\n$ \[\033[0m\]"
+            ;;
         "vagrant")
             # green PS1
             PS1='\[\e[1;32m\]vagrant$ \w: \[\e[0m\]'
@@ -166,17 +185,3 @@ if [ -f "$dotfiles_path/machine_id" ]; then
     esac
 fi
 
-###########################################################
-# Mathworks Configuration
-###########################################################
-
-if [ -f "$dotfiles_path/machine_id" ]; then
-    machine_id="$(cat "$dotfiles_path/machine_id")" 
-    if [ "$machine_id" = ah-choloday-l ]; then
-        . /mathworks/hub/share/sbtools/bash_setup.bash
-
-        # Perforce colorschemes
-        export P4COLORS="@info=0:@error=31;1:@warning=35;1:action=36;1:how:36:change=34:depotFile=32:path=32:location=32:rev=31:depotRev=31"
-        #   export P4COLORS="@info=0:@error=31;1:@warning=35;1:action=36;1:how:36:change=33:depotFile=32:path=32:location=32:rev=31:depotRev=31"
-    fi
-fi

@@ -45,6 +45,8 @@ alias cook1='ssh choloday@cook1.eecs.umich.edu'
 alias rapidan='ssh choloday@rapidan.eecs.umich.edu'
 alias hopper='ssh choloday@hopper.eecs.umich.edu'
 alias liskov='ssh choloday@liskov.eecs.umich.edu'
+alias ah='ssh choloday@ah-choloday-l.dhcp.mathworks.com'
+
 
 
 # print out disk usage for everything in cwd and sort the results
@@ -171,8 +173,12 @@ if [ -f "$dotfiles_path/machine_id" ]; then
             PS1='\[\e[1;33m\]research$ \w: \[\e[0m\]'
             ;;
         "ah-choloday-l")
-            # yellow PS1
+            # orange PS1
             PS1="\[\033[01;38;5;130m\][ah-choloday-l:\w] ...\n$ \[\033[0m\]"
+            ;;
+        "personal-work-laptop")
+            # purple PS1
+            PS1="\[\033[01;38;5;140m\][personal-work-laptop:\w] ...\n$ \[\033[0m\]"
             ;;
         "vagrant")
             # green PS1

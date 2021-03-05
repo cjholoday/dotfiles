@@ -52,7 +52,6 @@
     "extensions.ignoreRecommendations": false,
     "go.inferGopath": true,
     "go.formatTool": "gofmt",
-    "editor.formatOnSave": true,
     "go.formatOnSave": true,
     "go.useDiffForFormatting": false,
     "python.formatting.formatOnSave": true,

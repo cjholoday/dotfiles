@@ -3,7 +3,6 @@
 ###########################################################
 # Support machine dependent bashrc additions
 ###########################################################
-
 # all per-system bashrc customizations are put in dotfiles/bashrc_local
 if [ -f "$HOME/.local_bashrc" ]; then
     . "$HOME/.local_bashrc"
@@ -138,9 +137,13 @@ ff() {
 # Mathworks Configuration
 ###########################################################
 
+dotfiles_path="$HOME/dotfiles"
 if [ -f "$dotfiles_path/machine_id" ]; then
     machine_id="$(cat "$dotfiles_path/machine_id")" 
     if [ "$machine_id" = ah-choloday-l ]; then
+        export P4USER=choloday
+        export P4EDITOR='/usr/bin/vim'
+
         . /mathworks/hub/share/sbtools/bash_setup.bash
 
         # Perforce colorschemes
@@ -172,9 +175,9 @@ if [ -f "$dotfiles_path/machine_id" ]; then
             # yellow PS1
             PS1='\[\e[1;33m\]research$ \w: \[\e[0m\]'
             ;;
-        "ah-choloday-l")
+        "mathworks")
             # orange PS1
-            PS1="\[\033[01;38;5;130m\][ah-choloday-l:\w] ...\n$ \[\033[0m\]"
+            PS1="\[\033[01;38;5;130m\][\h:\w] ...\n$ \[\033[0m\]"
             ;;
         "personal-work-laptop")
             # purple PS1

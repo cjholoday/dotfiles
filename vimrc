@@ -25,6 +25,8 @@ else
     hi DiffDelete gui=none ctermfg=NONE ctermbg=darkblue
     hi Folded ctermbg=Black
 
+    " Include relative numbers in addition to absolute numbers
+    " TODO
 endif
 
 execute pathogen#infect()
@@ -53,7 +55,6 @@ set softtabstop=4
 set expandtab
 set nrformats=
 set colorcolumn=80
-set relativenumber
 
 " Use real tabs for makefiles because the syntax demands it
 autocmd FileType make setlocal noexpandtab

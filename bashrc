@@ -3,9 +3,15 @@
 ###########################################################
 # Support machine dependent bashrc additions
 ###########################################################
-# all per-system bashrc customizations are put in dotfiles/bashrc_local
+
+# Include local customizations in .local_bashrc. Kept for compatibility.
 if [ -f "$HOME/.local_bashrc" ]; then
     . "$HOME/.local_bashrc"
+fi
+
+# The preferred way to store local configuration, since it can also be packaged as a repo
+if [ -d "$HOME/local_dotfiles" ]; then
+    . "$HOME/local_dotfiles/.local_bashrc"
 fi
 
 ###########################################################
@@ -131,26 +137,6 @@ alias dotdate="sh ~/dotfiles/update.sh && . ~/.bashrc"
 ff() { 
     find . -type f -iwholename '*'$*'*' ;
 }
-
-
-###########################################################
-# Mathworks Configuration
-###########################################################
-
-dotfiles_path="$HOME/dotfiles"
-if [ -f "$dotfiles_path/machine_id" ]; then
-    machine_id="$(cat "$dotfiles_path/machine_id")" 
-    if [ "$machine_id" = ah-choloday-l ]; then
-        export P4USER=choloday
-        export P4EDITOR='/usr/bin/vim'
-
-        . /mathworks/hub/share/sbtools/bash_setup.bash
-
-        # Perforce colorschemes
-        export P4COLORS="@info=0:@error=31;1:@warning=35;1:action=36;1:how:36:change=34:depotFile=32:path=32:location=32:rev=31:depotRev=31"
-        #   export P4COLORS="@info=0:@error=31;1:@warning=35;1:action=36;1:how:36:change=33:depotFile=32:path=32:location=32:rev=31:depotRev=31"
-    fi
-fi
 
 ###########################################################
 # Detect the machine id and use the corresponding PS1

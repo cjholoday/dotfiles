@@ -1,20 +1,6 @@
 #!/bin/bash 
 
 ###########################################################
-# Support machine dependent bashrc additions
-###########################################################
-
-# Include local customizations in .local_bashrc. Kept for compatibility.
-if [ -f "$HOME/.local_bashrc" ]; then
-    . "$HOME/.local_bashrc"
-fi
-
-# The preferred way to store local configuration, since it can also be packaged as a repo
-if [ -d "$HOME/local_dotfiles" ]; then
-    . "$HOME/local_dotfiles/.local_bashrc"
-fi
-
-###########################################################
 # autojump
 ###########################################################
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
@@ -52,6 +38,10 @@ alias hopper='ssh choloday@hopper.eecs.umich.edu'
 alias liskov='ssh choloday@liskov.eecs.umich.edu'
 alias ah='ssh choloday@ah-choloday-l.dhcp.mathworks.com'
 
+
+# "ls -l" but the octal permission values are prepended to each line
+# taken from https://askubuntu.com/questions/152001/how-can-i-get-octal-file-permissions-from-command-line
+lso() { ls -alG "$@" | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(" %0o ",k);print}'; }
 
 
 # print out disk usage for everything in cwd and sort the results
@@ -137,6 +127,23 @@ alias dotdate="sh ~/dotfiles/update.sh && . ~/.bashrc"
 ff() { 
     find . -type f -iwholename '*'$*'*' ;
 }
+
+###########################################################
+# Support machine dependent bashrc additions
+###########################################################
+
+# Placed second to last so that these settings can override the above settings
+# If placed after PS1 settings, the colors will be off in some cases
+
+# Include local customizations in .local_bashrc. Kept for compatibility.
+if [ -f "$HOME/.local_bashrc" ]; then
+    . "$HOME/.local_bashrc"
+fi
+
+# The preferred way to store local configuration, since it can also be packaged as a repo
+if [ -d "$HOME/local_dotfiles" ]; then
+    . "$HOME/local_dotfiles/.local_bashrc"
+fi
 
 ###########################################################
 # Detect the machine id and use the corresponding PS1

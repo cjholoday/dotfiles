@@ -1,3 +1,15 @@
+# for non-private text files
+# owner: rw
+# group: r
+# other: r
+chmod 644 FILE
+
+# for non-private exe's and directories
+# owner: rwx
+# group: rx
+# other: rx
+chmod 755 FILE
+
 # remove extension
 name=$(echo $filename | cut -f 1 -d '.')
 
@@ -54,3 +66,4 @@ VBoxManage modifyhd <absolute path to file> --resize <size in MB>
 
 # add public key to server to avoid typing a password every time
 ssh-copy-id remote_username@server_ip_address
+

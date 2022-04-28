@@ -108,6 +108,17 @@ alias eg='export GOPATH="$(git_root)"'
 alias srce='. "$(git_root)"/env/bin/activate'
 alias srcb=". ~/.bashrc"
 
+# Editing dotfiles
+alias ebashrc='vim ~/dotfiles/bashrc'
+alias ebashprofile='vim ~/dotfiles/bashrc'
+alias evimrc='vim ~/dotfiles/vimrc'
+alias egitignore='vim ~/dotfiles/gitignore'
+alias egitconfig='vim ~/dotfiles/gitconfig'
+alias einputrc='vim ~/dotfiles/inputrc'
+alias evscodesettings='vim ~/dotfiles/vscode_settings.json'
+alias elocalbashrc='vim ~/local_dotfiles/bashrc'
+alias emwbashrc='vim ~/local_dotfiles/bashrc'
+
 
 double_autojump() {
     arg="$1"
@@ -142,7 +153,7 @@ fi
 
 # The preferred way to store local configuration, since it can also be packaged as a repo
 if [ -d "$HOME/local_dotfiles" ]; then
-    . "$HOME/local_dotfiles/.local_bashrc"
+    . "$HOME/local_dotfiles/bashrc"
 fi
 
 ###########################################################

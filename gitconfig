@@ -26,9 +26,16 @@
     sps = push --recurse-submodules=on-demand
     sud = submodule update --remote --merge
 
+[url "git@github.mathworks.com:"]
+    insteadOf = https://github.mathworks.com/
+
 [core]
     editor = vim
     excludesfile = ~/.gitignore
 
 [push]
     default = simple
+[init]
+	defaultBranch = main
+[pull]
+	ff = only

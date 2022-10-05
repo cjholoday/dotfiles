@@ -27,18 +27,6 @@ alias showme="grep -rnw . -e "
 # used to login into my virtualbox vm
 alias vmlogin="ssh -p 3022 "$USER"@127.0.0.1"
 
-alias falcone="ssh colton@alabxeon.eecs.umich.edu"
-alias team583="ssh team583@alabxeon.eecs.umich.edu"
-alias cssh='ssh choloday@eecs583b.eecs.umich.edu'
-alias dijkstra='ssh -Y choloday@dijkstra.eecs.umich.edu'
-alias deadshot='ssh choloday@deadshot.eecs.umich.edu'
-alias cook1='ssh choloday@cook1.eecs.umich.edu'
-alias rapidan='ssh choloday@rapidan.eecs.umich.edu'
-alias hopper='ssh choloday@hopper.eecs.umich.edu'
-alias liskov='ssh choloday@liskov.eecs.umich.edu'
-alias ah='ssh choloday@ah-choloday-l.dhcp.mathworks.com'
-
-
 # "ls -l" but the octal permission values are prepended to each line
 # taken from https://askubuntu.com/questions/152001/how-can-i-get-octal-file-permissions-from-command-line
 lso() { ls -alG "$@" | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(" %0o ",k);print}'; }

@@ -167,13 +167,13 @@ if [ -f "$dotfiles_path/machine_id" ]; then
             # yellow PS1
             PS1='\[\e[1;33m\]research$ \w: \[\e[0m\]'
             ;;
-        "mathworks")
+        "mathworks-desktop")
             # orange PS1
             PS1="\[\033[01;38;5;130m\][\h:\w] ...\n$ \[\033[0m\]"
             ;;
-        "personal-work-laptop")
-            # purple PS1
-            PS1="\[\033[01;38;5;140m\][personal-work-laptop:\w] ...\n$ \[\033[0m\]"
+        "mathworks-laptop")
+            # yellow PS1
+            PS1='\[\e[1;33m\][\h:\w] ...\n$ \[\e[0m\]'
             ;;
         "vagrant")
             # green PS1

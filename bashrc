@@ -96,6 +96,24 @@ alias eg='export GOPATH="$(git_root)"'
 alias srce='. "$(git_root)"/env/bin/activate'
 alias srcb=". ~/.bashrc"
 
+# Add a path to PATH
+pathadd() {
+    path_to_add="$1"
+
+    # Ensure path is absolute
+    path_to_add="$(realpath "$path_to_add")"
+
+    if [ ! -d "$path_to_add" ]; then
+        echo "Path does not point at directory: '$path_to_add'"
+        return
+    fi
+
+    export PATH="${path_to_add}:$PATH"
+
+    # Highlight the new path in PATH
+    echo "$PATH" | grep "$path_to_add"
+}
+
 # Editing dotfiles
 alias ebashrc='vim ~/dotfiles/bashrc'
 alias ebashprofile='vim ~/dotfiles/bashrc'

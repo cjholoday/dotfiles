@@ -34,6 +34,8 @@ __pycache__/
 
 # osx
 .DS_STORE
+.DS_Store
+._.DS_Store
 
 # tar files
 *.tar.bz2

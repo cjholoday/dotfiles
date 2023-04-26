@@ -105,6 +105,10 @@ pathadd() {
 
     if [ ! -d "$path_to_add" ]; then
         echo "Path does not point at directory: '$path_to_add'"
+        echo
+        echo "Usage: pathadd <directory-path-to-add>"
+        echo "Note that you want to add a directory, not a file"
+
         return
     fi
 
@@ -198,7 +202,7 @@ if [ -f "$dotfiles_path/machine_id" ]; then
             PS1='\[\e[1;32m\]vagrant$ \w: \[\e[0m\]'
             ;;
         *)
-            # blue PS1
+            # orange PS1
             PS1="\[\033[01;38;5;130m\]${machine_id}$ \w: \[\033[0m\]"
             ;;
     esac

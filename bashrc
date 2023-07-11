@@ -46,6 +46,7 @@ elif [ "$(uname)" = "Linux" ]; then
     alias ls='ls --color'
 fi
 
+alias l='ls -lrt'
 alias m="make"
 alias p="python"
 alias g="git"
@@ -55,6 +56,7 @@ alias grep="grep --color"
 alias egrep="egrep --color"
 alias fgrep="fgrep --color"
 alias cheat="vim ~/.cheatsheet"
+alias lcheat="vim ~/local_dotfiles/cheatsheet"
 
 find_ctx_root() {
     local sentinel="$1"

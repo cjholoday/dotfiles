@@ -14,11 +14,11 @@ fi
 cd ~/.vim/bundle
 
 plugin_repos=""
-plugin_repos="$plugin_repos https://github.com/airblade/vim-gitgutter.git"
+# plugin_repos="$plugin_repos https://github.com/airblade/vim-gitgutter.git"
 plugin_repos="$plugin_repos https://github.com/bling/vim-airline"
-plugin_repos="$plugin_repos https://github.com/fatih/vim-go"
-plugin_repos="$plugin_repos https://github.com/easymotion/vim-easymotion"
-plugin_repos="$plugin_repos https://github.com/vim-scripts/RltvNmbr.vim.git"
+# plugin_repos="$plugin_repos https://github.com/fatih/vim-go"
+# plugin_repos="$plugin_repos https://github.com/easymotion/vim-easymotion"
+# plugin_repos="$plugin_repos https://github.com/vim-scripts/RltvNmbr.vim.git"
 
 set -p # disable globbing
 for plugin_repo in $plugin_repos; do

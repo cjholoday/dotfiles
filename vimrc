@@ -54,7 +54,6 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 set nrformats=
-set colorcolumn=80
 
 " Use real tabs for makefiles because the syntax demands it
 autocmd FileType make setlocal noexpandtab

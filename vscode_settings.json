@@ -64,5 +64,6 @@
     "git.ignoreLegacyWarning": true,
     "trailing-spaces.highlightCurrentLine": false,
     "clangd.detectExtensionConflicts": false,
-    "C_Cpp.dimInactiveRegions": false
+    "C_Cpp.dimInactiveRegions": false,
+    "window.zoomLevel": 1
 }

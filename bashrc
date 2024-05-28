@@ -46,6 +46,7 @@ elif [ "$(uname)" = "Linux" ]; then
     alias ls='ls --color'
 fi
 
+
 alias l='ls -lrt'
 alias m="make"
 alias p="python"
@@ -97,6 +98,8 @@ alias e='export'
 alias eg='export GOPATH="$(git_root)"'
 alias srce='. "$(git_root)"/env/bin/activate'
 alias srcb=". ~/.bashrc"
+
+alias echopath='echo $PATH'
 
 # Add a path to PATH
 pathadd() {

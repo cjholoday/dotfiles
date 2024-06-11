@@ -124,7 +124,10 @@ pathadd() {
 }
 
 # Editing dotfiles
+alias erc='vim ~/dotfiles/bashrc'
+alias elrc='vim ~/local_dotfiles/bashrc'
 alias ebashrc='vim ~/dotfiles/bashrc'
+alias elbashrc='vim ~/local_dotfiles/bashrc'
 alias ebashprofile='vim ~/dotfiles/bashrc'
 alias evimrc='vim ~/dotfiles/vimrc'
 alias egitignore='vim ~/dotfiles/gitignore'

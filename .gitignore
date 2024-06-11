@@ -2,6 +2,7 @@
 *.swp
 *.swo
 machine_id
+._*
 
 # Ignore local settings
 local_*

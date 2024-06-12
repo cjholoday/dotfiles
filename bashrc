@@ -27,10 +27,19 @@ alias showme="grep -rnw . -e "
 # used to login into my virtualbox vm
 alias vmlogin="ssh -p 3022 "$USER"@127.0.0.1"
 
-# "ls -l" but the octal permission values are prepended to each line
-# taken from https://askubuntu.com/questions/152001/how-can-i-get-octal-file-permissions-from-command-line
-lso() { ls -alG "$@" | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(" %0o ",k);print}'; }
-
+# A better ls -l customized to my liking
+lso() {
+    # Options:
+    #   -l: Use long listing format
+    #   -t: Sort by time, newest first
+    #   -r: Reverse sorting order (in this case, making newest last)
+    #   -h: Print sizes in a human readable format e.g. 1K, 234M, 2G, etc.
+    #
+    # The awk command prepends yellow colored octal permissions (e.g. 755) before each line. It's taken from
+    # https://askubuntu.com/questions/152001/how-can-i-get-octal-file-permissions-from-command-line and the only
+    # modification is making the permissions colored yellow, which is done in the printf command
+    ls -ltrh --color=always "$@" | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf("\033[1;33m%0o \033[0m",k);print}';
+}
 
 # print out disk usage for everything in cwd and sort the results
 SORT=sort
@@ -47,7 +56,7 @@ elif [ "$(uname)" = "Linux" ]; then
 fi
 
 
-alias l='ls -lrt'
+alias l="lso"
 alias m="make"
 alias p="python"
 alias g="git"

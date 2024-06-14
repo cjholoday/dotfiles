@@ -42,11 +42,44 @@ lso() {
 }
 
 # print out disk usage for everything in cwd and sort the results
-SORT=sort
-if [ "$(uname)" = Darwin ]; then 
-    SORT=gsort
-fi
-alias dus='du -sh * | "$SORT" -h'
+# SORT=sort
+# if [ "$(uname)" = Darwin ]; then 
+#     SORT=gsort
+# fi
+# alias dus='du -sh * | tee | "$SORT" -h'
+
+dus() {
+    # Temporary file to hold the unsorted results
+    local tmpfile=$(mktemp)
+
+    # Ensure temporary file is removed on script exit
+    trap 'rm -f "$tmpfile"' EXIT
+
+    # Determine the correct sort command (normal sort or gsort on macOS if installed)
+    local SORT=sort
+    if [ "$(uname)" = Darwin ]; then
+        SORT=gsort
+    fi
+
+    # Print unsorted output as it comes in, and save it to the temporary file
+    echo -e "Unsorted file and directory sizes:\n"
+    for item in *; do
+        du -sh "$item" | tee -a "$tmpfile"
+    done
+
+    # Sort the results stored in the temporary file and print
+    echo
+    echo
+    echo
+    echo
+    echo --------------------------------------
+    echo
+    echo
+    echo
+    echo
+    echo "Sorted file and directory sizes:"
+    "$SORT" -h "$tmpfile"
+}
 
 # ls syntax varies
 if [ "$(uname)" = "Darwin" ]; then

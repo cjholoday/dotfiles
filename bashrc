@@ -4,6 +4,8 @@
 # aliases
 ###########################################################
 
+alias rp='realpath'
+
 # A better ls -l customized to my liking
 lso() {
     # Options:
@@ -112,9 +114,78 @@ alias einputrc='vim ~/dotfiles/inputrc'
 alias evscodesettings='vim ~/dotfiles/vscode_settings.json'
 alias elocalbashrc='vim ~/local_dotfiles/bashrc'
 
+
+# Skip past intermediate directories where there is only one directory and nothing else
+# Can be used with '..' to go up or a dirname to go down
+cdzoom() {
+    if [[ "$1" == ".." ]]; then
+        prev_dir="$(pwd)"
+        cd .. || return
+
+        while true; do
+            # Check for files (not hidden)
+            file_count=$(find . -mindepth 1 -maxdepth 1 -type f ! -name '.*' | wc -l)
+            if [[ $file_count -gt 0 ]]; then
+                break
+            fi
+
+            # Find all subdirectories (not hidden)
+            dirs=()
+            while IFS= read -r -d $'\0' dir; do
+                dirs+=("$dir")
+            done < <(find . -mindepth 1 -maxdepth 1 -type d ! -name '.*' -print0)
+
+            # If exactly one subdirectory, and it's where we just came from
+            if [[ ${#dirs[@]} -eq 1 ]]; then
+                only_dir="$(cd "${dirs[0]}" && pwd)"
+                if [[ "$only_dir" == "$prev_dir" ]]; then
+                    prev_dir="$(pwd)"
+                    cd .. || return
+                    continue
+                fi
+            fi
+            break
+        done
+    else
+        cd -- "$1" || return
+        while true; do
+            # Check for files (not hidden)
+            file_count=$(find . -mindepth 1 -maxdepth 1 -type f ! -name '.*' | wc -l)
+            if [[ $file_count -gt 0 ]]; then
+                break
+            fi
+
+            # Find all subdirectories (not hidden)
+            dirs=()
+            while IFS= read -r -d $'\0' dir; do
+                dirs+=("$dir")
+            done < <(find . -mindepth 1 -maxdepth 1 -type d ! -name '.*' -print0)
+
+            if [[ ${#dirs[@]} -eq 1 ]]; then
+                cd -- "${dirs[0]}" || return
+            else
+                break
+            fi
+        done
+    fi
+}
+alias cdz='cdzoom'
+
 # Find a file with a pattern in name (taken from github/awdeorio/dotfiles):
 ff() { 
     find . -type f -iwholename '*'$*'*' ;
+}
+
+
+
+# Take all text passed and flip / to \ and vice versa
+flipslashes() {
+    all_text="$*"
+    forward_slashed="$(echo "$all_text" | sed 's/\\/\//g')"
+    backwards_slashed="$(echo "$all_text" | sed 's/\//\\/g')"
+    echo
+    echo "Forwards slashed: '$forward_slashed'"
+    echo "Bacwards slashed: '$backwards_slashed'"
 }
 
 ###########################################################
@@ -134,3 +205,4 @@ if [ -d "$HOME/local_dotfiles" ]; then
 fi
 
 PS1="\[\033[01;38;5;130m\]$ \w: \[\033[0m\]"
+

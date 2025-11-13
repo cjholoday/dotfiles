@@ -56,3 +56,13 @@ VBoxManage modifyhd <absolute path to file> --resize <size in MB>
 # add public key to server to avoid typing a password every time
 ssh-copy-id remote_username@server_ip_address
 
+# Copy files including the intermediate directories
+# Result: /base/dir/path/to/file
+rsync -a --relative /path/to/file /base/dir/
+
+
+# To create a new symlink (will fail if symlink exists already):
+ln -s /path/to/file /path/to/symlink
+
+# To create or update a symlink:
+ln -sf /path/to/file /path/to/symlink

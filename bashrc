@@ -194,6 +194,7 @@ flipslashes() {
 
 # Placed second to last so that these settings can override the above settings
 # If placed after PS1 settings, the colors will be off in some cases
+PS1="\[\033[01;38;5;130m\][\h:\w] ...\n$ \[\033[0m\]"
 
 if [ -d "$HOME/private_dotfiles" ]; then
     . "$HOME/private_dotfiles/bashrc"
@@ -204,5 +205,4 @@ if [ -d "$HOME/local_dotfiles" ]; then
     . "$HOME/local_dotfiles/bashrc"
 fi
 
-PS1="\[\033[01;38;5;130m\]$ \w: \[\033[0m\]"
 

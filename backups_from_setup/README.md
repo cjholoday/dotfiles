@@ -1,0 +1,1 @@
+This folder will contain any files backed up during symlink.sh

@@ -133,6 +133,4 @@ if [ -d "$HOME/local_dotfiles" ]; then
     . "$HOME/local_dotfiles/bashrc"
 fi
 
-
-
 PS1="\[\033[01;38;5;130m\]$ \w: \[\033[0m\]"

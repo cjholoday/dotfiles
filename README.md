@@ -11,4 +11,4 @@ cd dotfiles
 . ~/.bashrc
 ```
 
-Other bashrc additions can be placed at $HOME/private_dotfiles/bashrc, and they will be automatically picked up. This is useful for company-specific dotfile configuration.
+Other bashrc additions can be placed at `$HOME/private_dotfiles/bashrc`, and they will be automatically picked up. This is useful for company-specific dotfile configuration.

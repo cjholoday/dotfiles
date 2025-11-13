@@ -29,8 +29,6 @@ else
     " TODO
 endif
 
-execute pathogen#infect()
-
 " ignore old vim version for vim-go 
 let g:go_version_warning = 0
 

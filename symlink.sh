@@ -41,9 +41,6 @@ try_symlink() {
             
 }
 
-# create .user.gitconfig if it doesn't exist
-touch local_gitconfig
-touch local_bashrc
 
 dotfiles="bash_profile bashrc vimrc cheatsheet gitconfig local_gitconfig local_bashrc gitignore inputrc"
 dotfiles_path="$HOME/dotfiles"

@@ -23,12 +23,6 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # configuring ssh 
 
-# format for ~/.ssh/config by example
-# example:
-Host caen
-    HostName oncampus-course.engin.umich.edu
-    User choloday
-
 # useful packages (commands are for osx and ubuntu respectively)
 
 brew install the_silver_searcher
@@ -48,11 +42,6 @@ sudo apt-get install wget
 if [ -z "$(command -v ls)" ]; then
     echo "ls not found"
 fi
-
-# Git user setting format
-[user]
-    name = Colton Holoday
-    email = emailname@gmail.com
 
 # select N random lines from FILE
 shuf -n N FILE

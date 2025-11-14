@@ -101,7 +101,6 @@ function showfp() {
     # If the input begins with '---' assume it is a PEM string like '-------BEGIN CERTIFICATE------- ...'
     if [[ $input == ---* ]] ; then
         local pem_string="$input"
-        return
     else
         local cert_path="$input"
         local pem_string="$(cat "$cert_path")"

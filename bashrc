@@ -176,7 +176,26 @@ ff() {
     find . -type f -iwholename '*'$*'*' ;
 }
 
+function ff() {
+  find . \
+       -iwholename '*'$*'*' \
+       -not -iwholename '*/env/*' \
+       -not -iwholename '*/venv/*' \
+       -not -iwholename '*/node_modules/*' \
+       -not -iwholename '*/__pycache__*' \
+       -not -iwholename '*/tmp*' \
+       -not -iwholename '*.cache*' \
+       -not -path '*/\.*' \
+    ;
+}
 
+# Obtains a path to the root of a git repo
+function git_repo_root_path() {
+    echo "$(git rev-parse --show-toplevel 2> /dev/null)"
+}
+function jr() {
+    cd "$(git_repo_root_path)"
+}
 
 # Take all text passed and flip / to \ and vice versa
 flipslashes() {
@@ -188,13 +207,19 @@ flipslashes() {
     echo "Bacwards slashed: '$backwards_slashed'"
 }
 
-###########################################################
-# Support machine dependent bashrc additions
-###########################################################
-
 # Placed second to last so that these settings can override the above settings
 # If placed after PS1 settings, the colors will be off in some cases
 PS1="\[\033[01;38;5;130m\][\h:\w] ...\n$ \[\033[0m\]"
+
+###########################################################
+# Source Files
+###########################################################
+
+. "$HOME/dotfiles/src/crypto.bash"
+
+###########################################################
+# Extensions
+###########################################################
 
 if [ -d "$HOME/private_dotfiles" ]; then
     . "$HOME/private_dotfiles/bashrc"
@@ -204,5 +229,3 @@ fi
 if [ -d "$HOME/local_dotfiles" ]; then
     . "$HOME/local_dotfiles/bashrc"
 fi
-
-
